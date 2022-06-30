@@ -3,7 +3,7 @@ setup:
 
 run:
 	stack build
-	stack exec decision-questions-exe
+	stack exec jao-delivery-exe
 
 build:
 	stack build
