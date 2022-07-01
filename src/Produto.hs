@@ -15,3 +15,10 @@ registerProduct = do
     hPutStr arq produto
     hClose arq
     putStrLn "Produto cadastrado com sucesso!"
+
+listProducts :: IO ()
+listProducts = do
+    arq <- openFile "products.txt" ReadMode
+    fileContents <- hGetContents arq
+    putStrLn fileContents
+    hClose arq
