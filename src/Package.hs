@@ -3,8 +3,6 @@ module Package where
 import System.IO
 import Data.List.Split (splitOn)
 import System.Console.ANSI
-import Data.Char (chr)
-import System.Console.ANSI
 import Data.List
 
 registerPackage :: IO ()
