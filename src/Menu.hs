@@ -62,11 +62,13 @@ deliveryFinishMenu = do {
   putStrLn "========= FINALIZAR ENTREGA =========";
   putStrLn "1 - Sucesso";
   putStrLn "2 - Falha";
-  putStrLn "3 - Voltar";
+  putStrLn "3 - Cancelar";
+  putStrLn "4 - Voltar";
 
   option <- getLine;
   case option of
     "1" -> putStrLn "Sucesso!"; --TODO
     "2" -> putStrLn "Falha!"; --TODO
-    "3" -> deliveryMenu;
+    "3" -> putStrLn "Cancelar.!"; --TODO
+    "4" -> deliveryMenu;
 }
