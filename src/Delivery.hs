@@ -7,6 +7,16 @@ import Data.List
 
 import Package
 
+-- Get the lenght of the lines in file delivery.txt as intenger
+getDeliveryIdentifier :: IO Int
+getDeliveryIdentifier = do
+  file <- openFile "delivery.txt" ReadWriteMode
+  fileContents <- hGetContents file
+  let new_identifier = ((length $ lines fileContents) + 1)
+  hClose file
+  return new_identifier
+
+-- TODO: excluir da listagem os produtos ja escolhidos para entrega
 printPendingPackages :: Int -> Int -> [String] -> IO ()
 printPendingPackages index len packages = do
     let package = packages !! index
@@ -34,27 +44,38 @@ listPendingPackages = do
     putStrLn $ "======== TODOS OS PACOTES PENDENTES ========" ++ "\n\n"
     printPendingPackages 0 len packages
     hClose file
-    
-    
-registerDelivery :: IO ()
-registerDelivery = do
-    arq <- openFile "delivery.txt" AppendMode
+
+
+addPackagesToBag :: String -> IO ()
+addPackagesToBag packages = do
     listPendingPackages
     putStrLn "Digite o código do pacote:"
-    codigo <- getLine
-    -- TODO verificar se código existe e está com status pendente
-    let entrega = "Código: " ++ codigo ++ ";" ++ "Status da Entrega: Em Progresso\n"
-    hPutStr arq entrega
-    hClose arq
-    putStrLn "Processo de Entrega cadastrada com sucesso!"
-      -- else
-      --   putStrLn "Produto não existe\n"
-    putStrLn "Deseja entregar outro produto?"
+    id <- getLine
+    -- TODO verificar se o código existe
+    let packagesIds = packages ++ id
+    putStrLn "Produto adicionado com sucesso!"
+    putStrLn "Deseja adicionar outro produto?"
     putStrLn "(s) sim (n) não"
     answer <- getLine
     if answer == "s"
-    then registerDelivery
-    else putStrLn ("Entrega cadastrada!")
+    then do
+        let parsedPackages = packagesIds ++ ","
+        addPackagesToBag parsedPackages
+    else do
+        deliveryId <- getDeliveryIdentifier
+        file <- openFile "delivery.txt" AppendMode
+        let delivery = ("Identificador: " ++ (show deliveryId) ++ ";" ++
+                      "Pacotes: " ++ packagesIds ++ ";" ++
+                      "Status: " ++ "em rota de entrega" ++ "\n")
+        hPutStr file delivery
+        hClose file
+        putStrLn "Entrega cadastrada!"
+
+
+registerDelivery :: IO ()
+registerDelivery = do
+    let packages = ""
+    addPackagesToBag packages
     
 
 printDelivery :: Int -> Int -> [String] -> IO ()
