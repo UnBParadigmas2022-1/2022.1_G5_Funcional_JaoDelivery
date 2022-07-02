@@ -31,18 +31,28 @@ registerPackage = do
 
 printList :: Int -> Int -> [String] -> IO ()
 printList num len list = do
-    let item = list !! num
-    if num <= (len * 2)
+    let package = list !! num
+    if num < len 
     then do
-        putStrLn item
+        let attributes = splitOn ";" package
+        let identifier = attributes !! 0
+        let destinatario = attributes !! 1
+        let remetente = attributes !! 2
+        let endereco = attributes !! 3
+        let status = attributes !! 4
+        putStrLn $  identifier ++ "\n" ++ 
+                    destinatario ++ "\n" ++ 
+                    remetente ++ "\n" ++ 
+                    endereco ++ "\n" ++
+                    status ++ "\n"
         printList (num + 1) len list
-    else putStrLn ("Quantidade de pacotes: " ++ (show len))
+    else putStrLn ("Quantidade de pacotes registrados: " ++ (show len)) -- fix this
 
 listPackages :: IO ()
 listPackages = do
     arq <- openFile "packages.txt" ReadMode
     fileContents <- hGetContents arq
-    let packages = splitOn ";" fileContents
+    let packages = splitOn "\n" fileContents
     let len = (length (lines fileContents))
     clearScreen;
     putStrLn "======== TODOS OS PACOTES PARA ENTREGA ========"
