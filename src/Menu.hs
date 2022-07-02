@@ -3,27 +3,27 @@ module Menu (menu) where
 import System.IO
 import Control.Monad
 import System.Console.ANSI
-import Produto
+import Package
 
 menu :: IO()
 menu = do {
   clearScreen;
   putStrLn "========= SERVIÇO DE ENTREGA =========";
-  putStrLn "1 - Produto";
+  putStrLn "1 - Pacote";
   putStrLn "2 - Entrega";
   putStrLn "3 - Sair";
 
   option <- getLine;
   case option of
-    "1" -> productMenu;
+    "1" -> packageMenu;
     "2" -> deliveryMenu;
     "3" -> putStrLn "Finalizando...";
 }
 
-productMenu :: IO()
-productMenu = do {
+packageMenu :: IO()
+packageMenu = do {
   clearScreen;
-  putStrLn "========= PRODUTO =========";
+  putStrLn "========= PACOTE =========";
   putStrLn "1 - Cadastrar";
   putStrLn "2 - Verificar";
   putStrLn "3 - Calcular tempo de entrega";
@@ -31,8 +31,8 @@ productMenu = do {
 
   option <- getLine;
   case option of
-    "1" -> registerProduct;
-    "2" -> listProducts;
+    "1" -> registerPackage;
+    "2" -> listPackages;
     "3" -> putStrLn "Calculando tempo de entrega"; --TODO
     "4" -> menu;
 }
