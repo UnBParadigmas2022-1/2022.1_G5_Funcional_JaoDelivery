@@ -1,5 +1,6 @@
 module Util (printShortestPath) where
 
+import Structure
 
 printShortestPath :: [Node] -> String -> IO ()
 printShortestPath [x] acc = do 
