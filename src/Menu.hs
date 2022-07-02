@@ -50,7 +50,7 @@ deliveryMenu = do {
   option <- getLine;
   case option of
     "1" -> registerDelivery;
-    -- "2" -> listDelivery;
+    "2" -> listDelivery;
     "3" -> putStrLn "Calculando rota de entrega"; --TODO
     "4" -> deliveryFinishMenu;
     "5" -> menu;
