@@ -5,6 +5,7 @@ import Data.List.Split (splitOn)
 import System.Console.ANSI
 import Data.Char (chr)
 import System.Console.ANSI
+import Data.List
 
 registerPackage :: IO ()
 registerPackage = do
@@ -35,18 +36,9 @@ printList num len list = do
     if num < len 
     then do
         let attributes = splitOn ";" package
-        let identifier = attributes !! 0
-        let destinatario = attributes !! 1
-        let remetente = attributes !! 2
-        let endereco = attributes !! 3
-        let status = attributes !! 4
-        putStrLn $  identifier ++ "\n" ++ 
-                    destinatario ++ "\n" ++ 
-                    remetente ++ "\n" ++ 
-                    endereco ++ "\n" ++
-                    status ++ "\n"
+        putStrLn  $ intercalate "\n" attributes ++ "\n\n"
         printList (num + 1) len list
-    else putStrLn ("Quantidade de pacotes registrados: " ++ (show len)) -- fix this
+    else putStrLn ("\n"++ "Quantidade de pacotes registrados: " ++ (show len)) -- fix this
 
 listPackages :: IO ()
 listPackages = do
@@ -55,7 +47,7 @@ listPackages = do
     let packages = splitOn "\n" fileContents
     let len = (length (lines fileContents))
     clearScreen;
-    putStrLn "======== TODOS OS PACOTES PARA ENTREGA ========"
+    putStrLn $ "======== TODOS OS PACOTES ========" ++ "\n\n"
     printList 0 len packages
     hClose arq
 
