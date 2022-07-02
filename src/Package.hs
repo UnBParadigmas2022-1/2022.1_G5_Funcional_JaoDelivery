@@ -40,7 +40,7 @@ printList num len list = do
 
 listPackages :: IO ()
 listPackages = do
-    arq <- openFile "packages.txt" ReadMode
+    arq <- openFile "packages.txt" ReadWriteMode
     fileContents <- hGetContents arq
     let packages = splitOn "\n" fileContents
     let len = (length (lines fileContents))
