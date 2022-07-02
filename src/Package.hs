@@ -53,10 +53,8 @@ listPackages = do
 -- Get the lenght of the lines in file packages.txt as intenger
 getIdentifier :: IO Int
 getIdentifier = do
-  file <- openFile "packages.txt" ReadWriteMode
-  fileContents <- hGetContents file
-  let new_identifier = ((length $ lines fileContents) +1)
-  return new_identifier
+  contents <- readFile "packages.txt"
+  return ((length $ lines contents) +1)
 
 -- Get the package by identifier
 getPackage :: Int -> IO String
