@@ -17,7 +17,7 @@ type Node = String
 type Graph = [(Node, [Edge])]
 type Dnode = (Node, (Float, Node))
 
-importText :: String -> Bool -> Graph
+importText :: String -> Graph
 importText strLines = 
   let readData [n1, n2, w] = ((n1, n2), read w :: Float)
       es = map (readData . words) $ lines strLines

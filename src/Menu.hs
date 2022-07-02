@@ -4,6 +4,7 @@ import System.IO
 import Control.Monad
 import System.Console.ANSI
 import Produto
+
 menu :: IO()
 menu = do {
   clearScreen;

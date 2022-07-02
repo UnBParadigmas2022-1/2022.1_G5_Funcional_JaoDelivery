@@ -5,6 +5,6 @@ import Structure
 
 main :: IO ()
 main = do
-  file <- readFile "file.csv"
-  let nodes = importFile file
+  file <- readFile "file.txt"
+  let nodes = importText file
   menu
