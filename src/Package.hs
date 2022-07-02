@@ -49,11 +49,20 @@ listPackages = do
     printList 0 len packages
     hClose arq
 
-
 -- Get the lenght of the lines in file packages.txt as intenger
 getIdentifier :: IO Int
 getIdentifier = do
-  contents <- readFile "packages.txt"
-  return ((length $ lines contents) +1)
+  file <- openFile "packages.txt" ReadWriteMode
+  fileContents <- hGetContents file
+  let new_identifier = ((length $ lines fileContents) +1)
+  return new_identifier
+
+-- Get the package by identifier
+getPackage :: Int -> IO String
+getPackage identifier = do
+  contents <- readFile "packages.txt" 
+  let packages = splitOn "\n" contents
+  let package = packages !! identifier
+  return package
 
 
