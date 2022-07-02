@@ -3,7 +3,7 @@ module Menu (menu) where
 import System.IO
 import Control.Monad
 import System.Console.ANSI
-
+import Produto
 menu :: IO()
 menu = do {
   clearScreen;
@@ -30,8 +30,8 @@ productMenu = do {
 
   option <- getLine;
   case option of
-    "1" -> putStrLn "Cadastrar produto"; --TODO
-    "2" -> putStrLn "Verificar produto"; --TODO
+    "1" -> registerProduct;
+    "2" -> listProducts;
     "3" -> putStrLn "Calculando tempo de entrega"; --TODO
     "4" -> menu;
 }
