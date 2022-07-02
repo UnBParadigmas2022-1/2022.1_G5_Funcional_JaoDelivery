@@ -3,7 +3,6 @@ module Package where
 import System.IO
 import Data.List.Split (splitOn)
 import System.Console.ANSI
-import Data.Char (chr)
 import System.Console.ANSI
 import Data.List
 
@@ -42,7 +41,7 @@ printList num len list = do
 
 listPackages :: IO ()
 listPackages = do
-    arq <- openFile "packages.txt" ReadMode
+    arq <- openFile "packages.txt" ReadWriteMode
     fileContents <- hGetContents arq
     let packages = splitOn "\n" fileContents
     let len = (length (lines fileContents))
