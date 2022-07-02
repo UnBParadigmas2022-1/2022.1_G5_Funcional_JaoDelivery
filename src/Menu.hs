@@ -31,8 +31,7 @@ productMenu = do {
   option <- getLine;
   case option of
     "1" -> registerProduct;
-    -- "2" -> putStrLn "Verificar produto"; --TODO
-    "2" -> listProducts; --TODO
+    "2" -> listProducts;
     "3" -> putStrLn "Calculando tempo de entrega"; --TODO
     "4" -> menu;
 }
