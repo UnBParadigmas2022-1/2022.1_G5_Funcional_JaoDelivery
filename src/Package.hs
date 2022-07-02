@@ -6,6 +6,14 @@ import System.Console.ANSI
 import Data.Char (chr)
 import System.Console.ANSI
 
+data Package = {
+    id      :: Int,
+    to      :: String,
+    from    :: String,
+    address :: String,
+    status  :: String
+}
+
 registerPackage :: IO ()
 registerPackage = do
     clearScreen;
