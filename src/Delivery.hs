@@ -1,8 +1,10 @@
-module Entrega where
+module Delivery where
 
 import System.IO
 import Data.List.Split (splitOn)
 import System.Console.ANSI
+
+import Package
 
 -- productExists :: [String] -> Bool ()
 --   productExists codigo= do
