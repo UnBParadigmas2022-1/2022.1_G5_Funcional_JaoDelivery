@@ -7,13 +7,15 @@ import System.Console.ANSI
 registerProduct :: IO ()
 registerProduct = do
     arq <- openFile "products.txt" AppendMode
+    putStrLn "Digite o código da compra:"
+    codigo <- getLine
     putStrLn "Digite o nome do produto:"
     nome <- getLine
     putStrLn "Digite o preço do produto:"
     preco <- getLine
     putStrLn "Digite a quantidade do produto:"
     quantidade <- getLine
-    let produto = "Produto: " ++ nome ++ ";" ++ "Preco: " ++ preco ++ ";" ++ "Qtd: " ++ quantidade ++ "\n"
+    let produto = "Codigo: " ++ codigo ++ ";" ++ "Produto: " ++ nome ++ ";" ++ "Preco: " ++ preco ++ ";" ++ "Qtd: " ++ quantidade ++ "\n"
     hPutStr arq produto
     hClose arq
     putStrLn "Produto cadastrado com sucesso!"
@@ -21,7 +23,7 @@ registerProduct = do
 printList :: Int -> Int -> [String] -> IO ()
 printList num len list = do
     let item = list !! num
-    if num <= (len * 2)
+    if num <= (len * 3)
     then do
         putStrLn item
         printList (num + 1) len list
