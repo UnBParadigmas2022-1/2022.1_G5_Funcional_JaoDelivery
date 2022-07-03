@@ -3,8 +3,8 @@ module Package where
 import System.IO
 import Data.List.Split (splitOn)
 import System.Console.ANSI
-import Data.Char (chr)
 import System.Console.ANSI
+import Data.List
 
 data Package = Package { 
   id :: Int, 
@@ -76,10 +76,16 @@ listPackages = do
   printList 0 len packages
   hClose arq
 
-
 -- Get the lenght of the lines in file packages.txt as intenger
 getIdentifier :: IO Int
 getIdentifier = do
   contents <- readFile "packages.txt"
   return ((length $ lines contents) +1)
 
+-- Get the package by identifier
+getPackage :: Int -> IO String
+getPackage identifier = do
+  contents <- readFile "packages.txt" 
+  let packages = splitOn "\n" contents
+  let package = packages !! identifier
+  return package
