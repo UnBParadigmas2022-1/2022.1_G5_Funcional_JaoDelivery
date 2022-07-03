@@ -4,6 +4,7 @@ import System.IO
 import Data.List (intercalate)
 import Data.List.Split (splitOn)
 import System.Console.ANSI
+import System.Directory
 import Control.DeepSeq
 import Data.List
 import Util
@@ -18,7 +19,14 @@ data Delivery = Delivery {
 
 readDeliveriesFromFile :: IO [Delivery]
 readDeliveriesFromFile = do
-  file <- openFile "deliveries.txt" ReadMode
+  let filename = "deliveries.txt"
+  exists <- doesFileExist filename
+
+  if not exists
+  then writeFile filename ""
+  else return ()
+  
+  file <- openFile filename ReadMode
   fileContents <- hGetContents file
   fileContents `deepseq` putStr fileContents
   let readData [id, packages, status] = Delivery (read id :: Int) (map (read::String->Int) (splitOn "," packages)) status

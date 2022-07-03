@@ -23,6 +23,7 @@ dependencies:
   - base >= 4.7 && < 5
   - ansi-terminal
   - deepseq
+  - directory
   - split >=0.2 && <0.3
 
 library:

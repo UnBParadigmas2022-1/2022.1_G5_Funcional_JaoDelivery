@@ -1,5 +1,6 @@
 module Util (printShortestPath) where
 
+import System.Directory
 import Structure
 
 printShortestPath :: [Node] -> String -> IO ()
