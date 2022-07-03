@@ -1,4 +1,7 @@
-module Menu (menu) where
+module Menu (
+  menu,
+  packageMenu
+) where
 
 import System.IO
 import Control.Monad
@@ -23,16 +26,18 @@ menu = do {
 packageMenu :: IO()
 packageMenu = do {
   clearScreen;
+
+  packages <- readPackagesFromFile;
   putStrLn "========= PACOTE =========";
   putStrLn "1 - Cadastrar";
   putStrLn "2 - Verificar";
   putStrLn "3 - Calcular tempo de entrega";
   putStrLn "4 - Voltar";
-
   option <- getLine;
+
   case option of
-    "1" -> registerPackage;
-    "2" -> listPackages;
+    "1" -> registerPackage packages;
+    "2" -> listPackages packages;
     "3" -> putStrLn "Calculando tempo de entrega"; --TODO
     "4" -> menu;
 }
