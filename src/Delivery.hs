@@ -17,8 +17,8 @@ data Delivery = Delivery {
 
 readDeliveriesFromFile :: IO [Delivery]
 readDeliveriesFromFile = do
-  arq <- openFile "deliveries.txt" ReadMode
-  fileContents <- hGetContents arq
+  file <- openFile "deliveries.txt" ReadMode
+  fileContents <- hGetContents file
   let readData [id, packages, status] = Delivery (read id :: Int) (map (read::String->Int) (splitOn "," packages)) status
   let deliveries = map words $ lines fileContents
   return (map readData deliveries)
@@ -29,15 +29,15 @@ deliveryToString (Delivery id packages status) =
 
 createFileFromDeliveries :: [Delivery] -> IO ()
 createFileFromDeliveries deliveries = do
-  arq <- openFile "deliveries.txt" WriteMode
+  file <- openFile "deliveries.txt" WriteMode
   let deliveryStrings = map deliveryToString deliveries
-  hPutStr arq (unlines deliveryStrings)
-  hClose arq
+  hPutStr file (unlines deliveryStrings)
+  hClose file
 
--- Get the lenght of the lines in file delivery.txt as intenger
+-- Get the lenght of the lines in file deliveries.txt as intenger
 getDeliveryIdentifier :: IO Int
 getDeliveryIdentifier = do
-  file <- openFile "delivery.txt" ReadWriteMode
+  file <- openFile "deliveries.txt" ReadWriteMode
   fileContents <- hGetContents file
   let new_identifier = ((length $ lines fileContents) + 1)
   hClose file
@@ -46,81 +46,81 @@ getDeliveryIdentifier = do
 -- TODO: excluir da listagem os produtos ja escolhidos para entrega
 printPendingPackages :: Int -> Int -> [String] -> IO ()
 printPendingPackages index len packages = do
-    let package = packages !! index
-    if index < len
+  let package = packages !! index
+  if index < len
+  then do
+    let attributes = splitOn ";" package
+    let status = last attributes
+    if status == "Status: pendente"
     then do
-        let attributes = splitOn ";" package
-        let status = last attributes
-        if status == "Status: pendente"
-        then do
-            putStrLn  $ intercalate "\n" attributes ++ "\n\n"
-        else
-            pure ()
-        printPendingPackages (index + 1) len packages
+      putStrLn  $ intercalate "\n" attributes ++ "\n\n"
     else
-        putStrLn ""
+      pure ()
+    printPendingPackages (index + 1) len packages
+  else
+    putStrLn ""
 
 
 listPendingPackages :: IO ()
 listPendingPackages = do
-    file <- openFile "packages.txt" ReadMode
-    fileContents <- hGetContents file
-    let packages = splitOn "\n" fileContents
-    let len = (length (lines fileContents))
-    clearScreen;
-    putStrLn $ "======== TODOS OS PACOTES PENDENTES ========" ++ "\n\n"
-    printPendingPackages 0 len packages
-    hClose file
+  file <- openFile "packages.txt" ReadMode
+  fileContents <- hGetContents file
+  let packages = splitOn "\n" fileContents
+  let len = (length (lines fileContents))
+  clearScreen;
+  putStrLn $ "======== TODOS OS PACOTES PENDENTES ========" ++ "\n\n"
+  printPendingPackages 0 len packages
+  hClose file
 
 
-addPackagesToBag :: String -> IO ()
-addPackagesToBag packages = do
-    listPendingPackages
-    putStrLn "Digite o código do pacote:"
-    id <- getLine
-    -- TODO verificar se o código existe
-    let packagesIds = packages ++ id
-    putStrLn "Produto adicionado com sucesso!"
-    putStrLn "Deseja adicionar outro produto?"
-    putStrLn "(s) sim (n) não"
-    answer <- getLine
-    if answer == "s"
-    then do
-        let parsedPackages = packagesIds ++ ","
-        addPackagesToBag parsedPackages
-    else do
-        deliveryId <- getDeliveryIdentifier
-        file <- openFile "delivery.txt" AppendMode
-        let delivery = ("Identificador: " ++ (show deliveryId) ++ ";" ++
-                      "Pacotes: " ++ packagesIds ++ ";" ++
-                      "Status: " ++ "em rota de entrega" ++ "\n")
-        hPutStr file delivery
-        hClose file
-        putStrLn "Entrega cadastrada!"
+addPackagesToBag :: [Int] -> IO [Int]
+addPackagesToBag packagesIdList = do
+  listPendingPackages
+  putStrLn "Digite o código do pacote:"
+  id <- getLine 
+  -- TODO: verificar se o código existe
+  let newPackagesIdList = packagesIdList ++ [read id :: Int]
+  putStrLn "Produto adicionado com sucesso!"
+  putStrLn "Deseja adicionar outro produto?"
+  putStrLn "(s) sim (n) não"
+  answer <- getLine
+  -- TODO: adicionar default case
+  if answer == "s"
+  then do
+      addPackagesToBag newPackagesIdList
+  else return packagesIdList
 
 
-registerDelivery :: IO ()
-registerDelivery = do
-    let packages = ""
-    addPackagesToBag packages
+registerDelivery :: [Delivery] -> IO ()
+registerDelivery deliveries = do
+  let packagesIds = []
+  packagesIds <- addPackagesToBag packagesIds
+  let deliveryId = (length deliveries) + 1
+  let delivery = Delivery deliveryId packagesIds "entregando"
+  createFileFromDeliveries (deliveries ++ [delivery])
+  putStrLn "Entrega cadastrada!"
     
 
-printDelivery :: Int -> Int -> [String] -> IO ()
-printDelivery num len list = do
-    let item = list !! num
-    if num <= (len * 2)
-    then do
-        putStrLn item
-        printDelivery (num + 1) len list
-    else putStrLn ("Quantidade de entregas: " ++ (show len))
+printDelivery :: Delivery -> IO ()
+printDelivery (Delivery id packages status) = do
+  let delivery = ("Identificador: " ++ (show id) ++ "\n" ++
+                "Pacotes: " ++ (intercalate "," (map show packages)) ++ "\n" ++
+                "Status: " ++ status ++ "\n")
+  putStrLn delivery
 
-listDelivery :: IO ()
-listDelivery = do
-    arq <- openFile "delivery.txt" ReadMode
-    fileContents <- hGetContents arq
-    let deliverys = splitOn ";" fileContents
-    let len = (length (lines fileContents))
-    clearScreen
-    putStrLn "======== STATUS ENTREGA ========"
-    printDelivery 0 len deliverys
-    hClose arq
+
+printDeliveries :: Int -> Int -> [Delivery] -> IO ()
+printDeliveries index len deliveries = do
+  let delivery = deliveries !! index
+  if index /= len
+  then do
+      printDelivery delivery
+      printDeliveries (index + 1) len deliveries
+  else putStrLn ("Quantidade de entregas: " ++ (show len))
+
+listDeliveries :: [Delivery] -> IO ()
+listDeliveries deliveries = do
+  let len = length deliveries
+  clearScreen
+  putStrLn "======== STATUS ENTREGA ========"
+  printDeliveries 0 len deliveries
