@@ -59,13 +59,17 @@ deliveryMenu = do {
   case option of
     "1" -> registerDelivery deliveries packages;
     "2" -> listDeliveries deliveries;
-    "3" -> deliveryFinishMenu;
+    "3" -> deliveryFinishMenu deliveries packages;
     "4" -> menu;
 }
 
-deliveryFinishMenu :: IO()
-deliveryFinishMenu = do {
+deliveryFinishMenu :: [Delivery] -> [Package] -> IO()
+deliveryFinishMenu deliveries packages = do {
   clearScreen;
+
+  "Digite o código da entrega:"
+  id <- getLine
+  -- TODO: verificar se o código existe
   putStrLn "========= FINALIZAR ENTREGA =========";
   putStrLn "1 - Sucesso";
   putStrLn "2 - Falha";
@@ -74,8 +78,8 @@ deliveryFinishMenu = do {
 
   option <- getLine;
   case option of
-    "1" -> putStrLn "Sucesso!"; --TODO
-    "2" -> putStrLn "Falha!"; --TODO
-    "3" -> putStrLn "Cancelar.!"; --TODO
+    "1" -> updateDeliveryStatus deliveries packages (read id :: Int) "sucesso";
+    "2" -> updateDeliveryStatus deliveries packages (read id :: Int) "falha";
+    "3" -> updateDeliveryStatus deliveries packages (read id :: Int) "cancelada";
     "4" -> deliveryMenu;
 }
