@@ -36,6 +36,21 @@ createFileFromDeliveries deliveries = do
   hPutStr file (unlines deliveryStrings)
   hClose file
 
+continueAddPackages :: [Package] -> [Int] -> IO [Int]
+continueAddPackages packages newPackagesIdList = do
+  putStrLn "Deseja adicionar outro produto?"
+  putStrLn "(s) sim (n) não"
+  answer <- getLine
+  if answer == "s"
+  then do
+    addPackagesToBag packages newPackagesIdList
+  else if answer == "n"
+  then do
+    return newPackagesIdList
+  else do
+    putStrLn "Opcao invalida, tente novamente\n"
+    continueAddPackages packages newPackagesIdList
+
 addPackagesToBag :: [Package] -> [Int] -> IO [Int]
 addPackagesToBag packages packagesIdList = do
   listPendingPackages packages
@@ -44,14 +59,7 @@ addPackagesToBag packages packagesIdList = do
   -- TODO: verificar se o código existe
   let newPackagesIdList = packagesIdList ++ [read id :: Int]
   putStrLn "Produto adicionado com sucesso!"
-  putStrLn "Deseja adicionar outro produto?"
-  putStrLn "(s) sim (n) não"
-  answer <- getLine
-  -- TODO: adicionar default case
-  if answer == "s"
-  then do
-      addPackagesToBag packages newPackagesIdList
-  else return packagesIdList
+  continueAddPackages packages newPackagesIdList
 
 registerDelivery :: [Delivery] -> [Package] -> IO ()
 registerDelivery deliveries packages = do
