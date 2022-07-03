@@ -32,14 +32,14 @@ packageMenu = do {
   putStrLn "========= PACOTE =========";
   putStrLn "1 - Cadastrar";
   putStrLn "2 - Verificar";
-  putStrLn "3 - Calcular tempo de entrega";
+  putStrLn "3 - Calcular rota de entrega";
   putStrLn "4 - Voltar";
   option <- getLine;
 
   case option of
     "1" -> registerPackage packages;
     "2" -> listPackages packages;
-    "3" -> putStrLn "Calculando tempo de entrega"; --TODO
+    "3" -> putStrLn "Calculando rota de entrega"; --TODO
     "4" -> menu;
 }
 
@@ -53,17 +53,15 @@ deliveryMenu = do {
   putStrLn "========= ENTREGA =========";
   putStrLn "1 - Cadastrar";
   putStrLn "2 - Verificar";
-  putStrLn "3 - Calcular rota";
-  putStrLn "4 - Finalizar entrega";
-  putStrLn "5 - Voltar";
+  putStrLn "3 - Finalizar entrega";
+  putStrLn "4 - Voltar";
 
   option <- getLine;
   case option of
     "1" -> registerDelivery deliveries packages;
     "2" -> listDeliveries deliveries;
-    "3" -> putStrLn "Calculando rota de entrega"; --TODO
-    "4" -> deliveryFinishMenu;
-    "5" -> menu;
+    "3" -> deliveryFinishMenu;
+    "4" -> menu;
 }
 
 deliveryFinishMenu :: IO()
