@@ -34,48 +34,9 @@ createFileFromDeliveries deliveries = do
   hPutStr file (unlines deliveryStrings)
   hClose file
 
--- Get the lenght of the lines in file deliveries.txt as intenger
-getDeliveryIdentifier :: IO Int
-getDeliveryIdentifier = do
-  file <- openFile "deliveries.txt" ReadWriteMode
-  fileContents <- hGetContents file
-  let new_identifier = ((length $ lines fileContents) + 1)
-  hClose file
-  return new_identifier
-
--- TODO: excluir da listagem os produtos ja escolhidos para entrega
-printPendingPackages :: Int -> Int -> [String] -> IO ()
-printPendingPackages index len packages = do
-  let package = packages !! index
-  if index < len
-  then do
-    let attributes = splitOn ";" package
-    let status = last attributes
-    if status == "Status: pendente"
-    then do
-      putStrLn  $ intercalate "\n" attributes ++ "\n\n"
-    else
-      pure ()
-    printPendingPackages (index + 1) len packages
-  else
-    putStrLn ""
-
-
-listPendingPackages :: IO ()
-listPendingPackages = do
-  file <- openFile "packages.txt" ReadMode
-  fileContents <- hGetContents file
-  let packages = splitOn "\n" fileContents
-  let len = (length (lines fileContents))
-  clearScreen;
-  putStrLn $ "======== TODOS OS PACOTES PENDENTES ========" ++ "\n\n"
-  printPendingPackages 0 len packages
-  hClose file
-
-
-addPackagesToBag :: [Int] -> IO [Int]
-addPackagesToBag packagesIdList = do
-  listPendingPackages
+addPackagesToBag :: [Package] -> [Int] -> IO [Int]
+addPackagesToBag packages packagesIdList = do
+  listPendingPackages packages
   putStrLn "Digite o código do pacote:"
   id <- getLine 
   -- TODO: verificar se o código existe
@@ -87,14 +48,13 @@ addPackagesToBag packagesIdList = do
   -- TODO: adicionar default case
   if answer == "s"
   then do
-      addPackagesToBag newPackagesIdList
+      addPackagesToBag packages newPackagesIdList
   else return packagesIdList
 
-
-registerDelivery :: [Delivery] -> IO ()
-registerDelivery deliveries = do
+registerDelivery :: [Delivery] -> [Package] -> IO ()
+registerDelivery deliveries packages = do
   let packagesIds = []
-  packagesIds <- addPackagesToBag packagesIds
+  packagesIds <- addPackagesToBag packages packagesIds
   let deliveryId = (length deliveries) + 1
   let delivery = Delivery deliveryId packagesIds "entregando"
   createFileFromDeliveries (deliveries ++ [delivery])

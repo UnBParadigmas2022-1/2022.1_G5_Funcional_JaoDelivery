@@ -15,8 +15,8 @@ data Package = Package {
 
 readPackagesFromFile :: IO [Package]
 readPackagesFromFile = do
-  arq <- openFile "packages.txt" ReadMode
-  fileContents <- hGetContents arq
+  file <- openFile "packages.txt" ReadMode
+  fileContents <- hGetContents file
   let readData [id, to, from, address, status] = Package (read id :: Int) to from address status
   let packages = map words $ lines fileContents
   return (map readData packages)
@@ -27,10 +27,10 @@ packageToString (Package id to from address status) =
 
 createFileFromPackages :: [Package] -> IO ()
 createFileFromPackages packages = do
-  arq <- openFile "packages.txt" WriteMode
+  file <- openFile "packages.txt" WriteMode
   let packageStrings = map packageToString packages
-  hPutStr arq (unlines packageStrings)
-  hClose arq
+  hPutStr file (unlines packageStrings)
+  hClose file
 
 registerPackage :: [Package] -> IO ()
 registerPackage packages = do
@@ -73,6 +73,13 @@ listPackages packages = do
   clearScreen;
   putStrLn "======== TODOS OS PACOTES PARA ENTREGA ========"
   printPackages 0 len packages
+
+listPendingPackages :: [Package] -> IO ()
+listPendingPackages packages = do
+  let len = length packages
+  clearScreen;
+  putStrLn "======== TODOS OS PACOTES PENDENTES ========"
+  printPackages 0 len (filter (\x -> status x == "pendente") packages)
 
 -- Get the package by identifier
 getPackage :: [Package] -> Int -> IO Package

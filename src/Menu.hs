@@ -48,6 +48,7 @@ deliveryMenu = do {
   clearScreen;
 
   deliveries <- readDeliveriesFromFile;
+  packages <- readPackagesFromFile;
   
   putStrLn "========= ENTREGA =========";
   putStrLn "1 - Cadastrar";
@@ -58,7 +59,7 @@ deliveryMenu = do {
 
   option <- getLine;
   case option of
-    "1" -> registerDelivery deliveries;
+    "1" -> registerDelivery deliveries packages;
     "2" -> listDeliveries deliveries;
     "3" -> putStrLn "Calculando rota de entrega"; --TODO
     "4" -> deliveryFinishMenu;
