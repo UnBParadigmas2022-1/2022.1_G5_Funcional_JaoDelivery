@@ -95,3 +95,12 @@ updatePackageStatus packages id status = do
   let updatedPackage = Package id (to element) (from element) (address element) status
   let updatedPackages = left ++ [updatedPackage] ++ right
   createFileFromPackages updatedPackages
+
+updatePackagesFromIds :: [Package] -> [Int] -> Int -> Int -> String -> IO ()
+updatePackagesFromIds packages packagesIds index len status = do
+  let id = packagesIds !! index
+  if index /= len
+  then do
+    updatePackageStatus packages id status
+    updatePackagesFromIds packages packagesIds (index+1) len status
+  else putStrLn "Status dos pacotes alterados com sucesso para: " ++ status
