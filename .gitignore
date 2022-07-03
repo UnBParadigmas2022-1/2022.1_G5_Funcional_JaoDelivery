@@ -3,4 +3,4 @@
 *.cabal
 .vscode
 *.txt
-!file.txt
+!graph.txt
