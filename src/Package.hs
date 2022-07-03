@@ -32,59 +32,50 @@ createFileFromPackages packages = do
   hPutStr arq (unlines packageStrings)
   hClose arq
 
-registerPackage :: IO ()
-registerPackage = do
+registerPackage :: [Package] -> IO ()
+registerPackage packages = do
   clearScreen;
   putStrLn "Digite o nome do destinatário:"
-  destinatario <- getLine
+  to <- getLine
   putStrLn "Digite o nome do remetente:"
-  remetente <- getLine
+  from <- getLine
   putStrLn "Digite o endereço do destinatário:"
-  endereco <- getLine
-  identifier <- getIdentifier
+  address <- getLine
+  let id = (length packages) + 1
   putStr "Identificador do pacote: " 
-  putStrLn $ show identifier
+  putStrLn $ show id
+  let package = Package id to from address "pendente"
 
-  let package = ("Identificador: " ++ (show identifier) ++ ";"++ 
-                "Destinatário: " ++ destinatario ++ ";" ++ 
-                "Remetente: " ++ remetente ++ ";" ++ 
-                "Endereço: " ++ endereco ++ ";" ++
-                "Status: pendente" ++ "\n")
-  arq <- openFile "packages.txt" AppendMode
-  hPutStr arq package
-  hClose arq
+  createFileFromPackages (packages ++ [package])
   putStrLn "Pacote cadastrado com sucesso!"
 
-printList :: Int -> Int -> [String] -> IO ()
-printList num len list = do
-  let item = list !! num
-  if num <= (len * 2)
+printPackage :: Package -> IO ()
+printPackage (Package id to from address status) = do
+  let package = ("Identificador: " ++ (show id) ++ "\n" ++
+                  "Destinatário: " ++ to ++ "\n" ++
+                  "Remetente: " ++ from ++ "\n" ++
+                  "Endereço: " ++ address ++ "\n" ++
+                  "Status: " ++ status ++ "\n")
+  putStrLn package
+
+printPackages :: Int -> Int -> [Package] -> IO ()
+printPackages num len list = do
+  let package = list !! num
+  if num /= len
   then do
-      putStrLn item
-      printList (num + 1) len list
+      printPackage package
+      printPackages (num + 1) len list
   else putStrLn ("Quantidade de pacotes: " ++ (show len))
 
-listPackages :: IO ()
-listPackages = do
-  arq <- openFile "packages.txt" ReadMode
-  fileContents <- hGetContents arq
-  let packages = splitOn ";" fileContents
-  let len = (length (lines fileContents))
+listPackages :: [Package] -> IO ()
+listPackages packages = do
+  let len = length packages
   clearScreen;
   putStrLn "======== TODOS OS PACOTES PARA ENTREGA ========"
-  printList 0 len packages
-  hClose arq
-
--- Get the lenght of the lines in file packages.txt as intenger
-getIdentifier :: IO Int
-getIdentifier = do
-  contents <- readFile "packages.txt"
-  return ((length $ lines contents) +1)
+  printPackages 0 len packages
 
 -- Get the package by identifier
-getPackage :: Int -> IO String
-getPackage identifier = do
-  contents <- readFile "packages.txt" 
-  let packages = splitOn "\n" contents
-  let package = packages !! identifier
+getPackage :: [Package] -> Int -> IO Package
+getPackage packages id = do
+  let package = packages !! id
   return package
