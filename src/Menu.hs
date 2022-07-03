@@ -7,6 +7,7 @@ import System.IO
 import Control.Monad
 import System.Console.ANSI
 import Package
+import Delivery
 
 menu :: IO()
 menu = do {
@@ -45,6 +46,9 @@ packageMenu = do {
 deliveryMenu :: IO()
 deliveryMenu = do {
   clearScreen;
+
+  deliveries <- readDeliveriesFromFile;
+  
   putStrLn "========= ENTREGA =========";
   putStrLn "1 - Cadastrar";
   putStrLn "2 - Verificar";
@@ -54,8 +58,8 @@ deliveryMenu = do {
 
   option <- getLine;
   case option of
-    "1" -> putStrLn "Cadastrar entrega"; --TODO
-    "2" -> putStrLn "Verificar entrega"; --TODO
+    "1" -> registerDelivery deliveries;
+    "2" -> listDeliveries deliveries;
     "3" -> putStrLn "Calculando rota de entrega"; --TODO
     "4" -> deliveryFinishMenu;
     "5" -> menu;

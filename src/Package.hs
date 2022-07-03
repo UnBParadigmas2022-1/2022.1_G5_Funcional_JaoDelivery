@@ -3,7 +3,6 @@ module Package where
 import System.IO
 import Data.List.Split (splitOn)
 import System.Console.ANSI
-import System.Console.ANSI
 import Data.List
 
 data Package = Package { 
