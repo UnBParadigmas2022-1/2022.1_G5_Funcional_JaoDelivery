@@ -102,3 +102,15 @@ listDeliveries deliveries = do
   clearScreen
   putStrLn "======== STATUS ENTREGA ========"
   printDeliveries 0 len deliveries
+
+updateDeliveryStatus :: [Delivery] -> [Package] -> Int -> String -> IO ()
+updateDeliveryStatus deliveries packages id status = do
+  -- update delivery status
+  let (left,element:right) = splitAt (id - 1) deliveries
+  let updatedDelivery = Delivery id (packages element) status
+  let updatedDeliveries = left ++ [updatedDelivery] ++ right
+  createFileFromDeliveries updatedDeliveries
+  putStrLn "Status da entrega " ++ id ++ "alterado com sucesso para: " ++ status
+
+  -- update delivery's packages status
+  updatePackagesFromIds packages (packages element) 0 (length packages element) status
