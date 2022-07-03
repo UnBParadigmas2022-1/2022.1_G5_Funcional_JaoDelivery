@@ -46,7 +46,7 @@ continueAddPackages packages newPackagesIdList = do
   then do
     return newPackagesIdList
   else do
-    putStrLn "Opcao Invalida, tente novamente"
+    putStrLn "Opcao invalida, tente novamente\n"
     continueAddPackages packages newPackagesIdList
 
 addPackagesToBag :: [Package] -> [Int] -> IO [Int]

@@ -86,3 +86,10 @@ getPackage :: [Package] -> Int -> IO Package
 getPackage packages id = do
   let package = packages !! id
   return package
+
+updatePackageStatus :: [Package] -> Int -> String -> IO ()
+updatePackageStatus packages id status = do
+  let (left,element:right) = splitAt (id - 1) packages
+  let updatedPackage = Package id (to element) (from element) (address element) status
+  let updatedPackages = left ++ [updatedPackage] ++ right
+  createFileFromPackages updatedPackages
