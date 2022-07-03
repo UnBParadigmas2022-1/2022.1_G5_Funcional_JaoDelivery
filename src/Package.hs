@@ -3,6 +3,7 @@ module Package where
 import System.IO
 import Data.List.Split (splitOn)
 import System.Console.ANSI
+import Control.DeepSeq
 import Data.List
 
 data Package = Package { 
@@ -17,6 +18,7 @@ readPackagesFromFile :: IO [Package]
 readPackagesFromFile = do
   file <- openFile "packages.txt" ReadMode
   fileContents <- hGetContents file
+  fileContents `deepseq` putStr fileContents
   let readData [id, to, from, address, status] = Package (read id :: Int) to from address status
   let packages = map words $ lines fileContents
   return (map readData packages)

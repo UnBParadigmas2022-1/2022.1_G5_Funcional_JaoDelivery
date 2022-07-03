@@ -26,9 +26,9 @@ menu = do {
 
 packageMenu :: IO()
 packageMenu = do {
-  clearScreen;
-
   packages <- readPackagesFromFile;
+  clearScreen;
+  
   putStrLn "========= PACOTE =========";
   putStrLn "1 - Cadastrar";
   putStrLn "2 - Verificar";
@@ -45,10 +45,9 @@ packageMenu = do {
 
 deliveryMenu :: IO()
 deliveryMenu = do {
-  clearScreen;
-
   deliveries <- readDeliveriesFromFile;
   packages <- readPackagesFromFile;
+  clearScreen;
   
   putStrLn "========= ENTREGA =========";
   putStrLn "1 - Cadastrar";
