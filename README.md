@@ -68,16 +68,22 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Lucas Melo dos Santos  |  --- | --- |
 | Mateus Brandao Teixeira  |  --- | --- |
 | Mateus Gomes do Nascimento  |  Implementação do fluxo de criar entrega, verificar entrega, finalizar entrega, atualizar status das entregas e pacotes, dos menus e da listagem de pacotes e entregas. | Excelente |
-| Matheus Afonso de Souza  |  Implementação da estrutura do grafo, do algoritmo de Dijkstra, do fluxo de calcular melhor rota, das funções de leitura e escrita em arquivos, dos menus, do cadastro de novos pacotes, da verificação de pacotes e da criação dos dados para popular o grafo. | Excelente |
+| Matheus Afonso de Souza  |  Implementação da estrutura do grafo, do algoritmo de Dijkstra, do fluxo de calcular melhor rota, das funções de leitura e escrita em arquivos, dos menus e da criação dos dados para popular o grafo. | Excelente |
 | Thiago Mesquita Peres Nunes de Carvalho  |  Implementação do fluxo de criar entrega, verificar entregas, finalizar entrega, da listagem de pacotes e entregas e menus. | Excelente |
-| Vinicius de Sousa Saturnino  |  Implementação do fluxo de criar pacote, verificar pacotes, dos menus e da repetição de escolhas do usuário | Excelente |
+| Vinicius de Sousa Saturnino  |  Implementação do fluxo de criar pacote, verificar pacotes, dos menus e da repetição de escolhas do usuário. | Excelente |
 
 ## Outros 
-Quaisquer outras informações sobre o projeto podem ser descritas aqui.
-(i) Lições Aprendidas;
-(ii) Percepções;
-(iii) Contribuições e Fragilidades, e
-(iV) Trabalhos Futuros.
+### Lições Aprendidas
+Com a execução do projeto, os membros do grupo aprenderam bastante sobre o paradigma funcional, vendo suas vantagens e desvantagens na hora da implementação. Além disso, utilizando esse paradigma os membros tiveram o desafio de pensar de forma diferente do que estavam acostumados e foi um exercício interessante para melhorar na programação e também entender novos paradigmas, para não depender apenas do paradigma que estão mais acostumados.
+
+### Percepções
+Depois da execução deste trabalho, os membros do grupo estão mais preparados para aprender novos paradigmas, visto que foi um grande desafio ter que "reprogramar o cérebro" para pensar em um novo paradigma, mas agora o grupo já possui uma experiência neste processo. E além disso, o grupo percebeu que contar apenas com o paradigma mais utilizado no momento pode ser uma estratégia perigosa, porque o mercado e as tecnologias podem mudar a qualquer momento com um novo paradigma, e por conta disso, saber aprender um novo paradigma é muito importante.
+
+### Contribuições e Fragilidades
+Com o desenvolvimento do projeto, foi evidente que no início o grupo teve uma grande dificuldade de contribuir com o projeto, visto que é uma linguagem e um paradigma novos para os membros. Mas ao decorrer do projeto, o entendimento do grupo aumentou sobre a linguagem e sobre o paradigma, e as contribuições ficaram mais fáceis de se fazer e o projeto pôde ser concluído.
+
+### Trabalhos Futuros
+Ao longo do desenvolvimento do projeto, o grupo percebeu que, embora as desvantagens de um paradigma novo sejam bem evidentes no início, por se tratar de uma nova forma de pensar, cada paradigma possui suas vantagens e desvantagens, e na hora de implementar um novo trabalho, é importante escolher um paradigma levando em conta estas vantagens e desvantagens.
 
 ## Fontes
 Referencie, adequadamente, as referências utilizadas.
