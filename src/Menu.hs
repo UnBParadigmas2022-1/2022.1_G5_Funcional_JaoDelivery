@@ -39,7 +39,7 @@ packageMenu = do {
   case option of
     "1" -> registerPackage packages;
     "2" -> listPackages packages;
-    "3" -> putStrLn "Calculando rota de entrega"; --TODO
+    "3" -> calculatePackageRoute packages;
     "4" -> menu;
 }
 

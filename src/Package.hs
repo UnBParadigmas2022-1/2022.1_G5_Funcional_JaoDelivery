@@ -6,6 +6,8 @@ import System.Console.ANSI
 import System.Directory
 import Control.DeepSeq
 import Data.List
+import Structure
+import Util
 
 data Package = Package { 
   id :: Int, 
@@ -95,7 +97,7 @@ listPendingPackages packages = do
 -- Get the package by identifier
 getPackage :: [Package] -> Int -> IO Package
 getPackage packages id = do
-  let package = packages !! id
+  let package = packages !! (id - 1)
   return package
 
 updatePackagesStatus :: [Package] -> [Int] -> String -> Int -> Int -> IO [Package]
@@ -114,3 +116,15 @@ updatePackagesFromIds packages packagesIds status = do
   updatedPackages <- updatePackagesStatus packages packagesIds status 0 (length packagesIds)
   createFileFromPackages updatedPackages
   putStrLn "Status dos pacotes alterados com sucesso!"
+  
+calculatePackageRoute :: [Package] -> IO ()
+calculatePackageRoute packages = do
+  clearScreen;
+  putStrLn "Digite o identificador do pacote:"
+  id <- getLine
+  package <- getPackage packages (read id :: Int)
+
+  file <- readFile "graph.txt"
+  let graph = importText file
+  let solution = dijkstra graph "Central"
+  printShortestPath (pathToNode solution (address package)) ""
