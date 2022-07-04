@@ -7,7 +7,7 @@ Paradigmas:
  - Logico
  - SMA
 
-# NomeDoProjeto
+# Jao_Delivery
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
 **Nro do Grupo**: 05<br>
@@ -42,8 +42,7 @@ Insira um manual ou um script para auxiliar ainda mais.
 Gifs animados e outras ilustrações são bem-vindos!
 
 ## Uso 
-Explique como usar seu projeto.
-Procure ilustrar em passos, com apoio de telas do software.
+Entre no software, e cadestre seu pacote a partir do menu de cadastro (opção "1"). Após isso, vá para a entrega (opção "2"), onde será selecionando o pacote e seu respectivo destinatário. Com isso é possível verificar o status de entrega no menu de "entrega" (opção "2"). E o status da mercadoria pode ser alterado para "Sucesso" (Produto entregue com sucesso), "Falha" (Produto entregue com falha) ou "Cancelar" (Cancelar a entrega do produto).
 
 ## Vídeo
 Adicione 1 ou mais vídeos com a execução do projeto.
