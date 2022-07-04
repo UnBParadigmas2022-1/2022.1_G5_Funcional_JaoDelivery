@@ -1,13 +1,4 @@
-# RepositorioTemplate
-Esse repositório é para ser utilizado pelos grupos como um template inicial, da home page do Projeto.
-As seções do Template NÃO DEVEM SER OMITIDAS, sendo TODAS RELEVANTES.
-
-Paradigmas:
- - Funcional
- - Logico
- - SMA
-
-# Jao_Delivery
+# Jão Delivery
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
 **Nro do Grupo**: 05<br>
@@ -31,27 +22,30 @@ Este software é um sistema de envio de mercadorias onde pessoas podem enviar se
 
 
 ## Screenshots
-![](./img/menu1.jpeg)
-![](./img/menuEntrega.jpeg)
+![menu](./img/menu1.jpeg)
+![menu entrega](./img/menuEntrega.jpeg)
 
 ## Instalação 
 É necessário instalar as seguintes ferramentas para rodar o programa:
 - GHC
 - cabal-install
-- Stack
+- stack
 - haskell-language-server(opcional)
   
-Para instalar, basta seguir o tutorial disponível em https://www.haskell.org/downloads/
-Em seguida, basta abrir o terminal e digitar **make run**
+Para instalar, basta seguir o tutorial disponível no [site do Haskell](https://www.haskell.org/downloads/), e em seguida, entrar no diretório do projeto e executar o seguinte comando no terminal:
+
+```bash
+make run
+```
+
 **Linguagens**: Haskell<br>
 **Tecnologias**: Haskell<br>
 
-
 ## Uso 
-Entre no software, e cadestre seu pacote a partir do menu de cadastro (opção "1"). Após isso, vá para a entrega (opção "2"), onde será selecionando o pacote e seu respectivo destinatário. Com isso é possível verificar o status de entrega no menu de "entrega" (opção "3"). E o status da mercadoria pode ser alterado para "Sucesso" (Produto entregue com sucesso), "Falha" (Produto entregue com falha) ou "Cancelar" (Cancelar a entrega do produto).
+Entre no software, e cadestre seu pacote a partir do menu de cadastro (opção "1"). Após isso, vá para a entrega (opção "2"), onde será selecionando os pacotes que serão entregues. Com isso é possível verificar o status de entrega no menu de "entrega" (opção "3"). E o status da mercadoria pode ser alterado para "Sucesso" (Produto entregue com sucesso), "Falha" (Produto entregue com falha) ou "Cancelar" (Cancelar a entrega do produto).
 
-![](./img/status_entrega_resumo.jpeg)
-![](./img/status_entrega.jpeg)
+![status entrega1](./img/status_entrega_resumo.jpeg)
+![status entrega2](./img/status_entrega.jpeg)
 
 
 ## Vídeo
