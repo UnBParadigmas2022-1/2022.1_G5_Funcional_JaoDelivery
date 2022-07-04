@@ -107,7 +107,7 @@ printDeliveries index len deliveries = do
       (countDeliveriesByStatus deliveries "entregando")
       (countDeliveriesByStatus deliveries "entregue")
       (countDeliveriesByStatus deliveries "falha")
-      (countDeliveriesByStatus deliveries "sucesso")
+      (countDeliveriesByStatus deliveries "cancelada")
 
 listDeliveries :: [Delivery] -> IO ()
 listDeliveries deliveries = do
