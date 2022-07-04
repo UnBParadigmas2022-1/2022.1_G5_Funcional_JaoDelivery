@@ -35,14 +35,24 @@ Este software é um sistema de envio de mercadorias onde pessoas podem enviar se
 ![](./img/menuEntrega.jpeg)
 
 ## Instalação 
+É necessário instalar as seguintes ferramentas para rodar o programa:
+- GHC
+- cabal-install
+- Stack
+- haskell-language-server(opcional)
+  
+Para instalar, basta seguir o tutorial disponível em https://www.haskell.org/downloads/
+Em seguida, basta abrir o terminal e digitar **make run**
 **Linguagens**: Haskell<br>
-**Tecnologias**: xxxxxx<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
-Gifs animados e outras ilustrações são bem-vindos!
+**Tecnologias**: Haskell<br>
+
 
 ## Uso 
-Entre no software, e cadestre seu pacote a partir do menu de cadastro (opção "1"). Após isso, vá para a entrega (opção "2"), onde será selecionando o pacote e seu respectivo destinatário. Com isso é possível verificar o status de entrega no menu de "entrega" (opção "2"). E o status da mercadoria pode ser alterado para "Sucesso" (Produto entregue com sucesso), "Falha" (Produto entregue com falha) ou "Cancelar" (Cancelar a entrega do produto).
+Entre no software, e cadestre seu pacote a partir do menu de cadastro (opção "1"). Após isso, vá para a entrega (opção "2"), onde será selecionando o pacote e seu respectivo destinatário. Com isso é possível verificar o status de entrega no menu de "entrega" (opção "3"). E o status da mercadoria pode ser alterado para "Sucesso" (Produto entregue com sucesso), "Falha" (Produto entregue com falha) ou "Cancelar" (Cancelar a entrega do produto).
+
+![](./img/status_entrega_resumo.jpeg)
+![](./img/status_entrega.jpeg)
+
 
 ## Vídeo
 Adicione 1 ou mais vídeos com a execução do projeto.
