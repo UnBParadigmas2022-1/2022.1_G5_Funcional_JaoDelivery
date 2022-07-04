@@ -25,7 +25,7 @@ readDeliveriesFromFile = do
   if not exists
   then writeFile filename ""
   else return ()
-  
+
   file <- openFile filename ReadMode
   fileContents <- hGetContents file
   fileContents `deepseq` putStr fileContents
@@ -63,7 +63,7 @@ addPackagesToBag :: [Package] -> [Int] -> IO [Int]
 addPackagesToBag packages packagesIdList = do
   listPendingPackages packages
   putStrLn "Digite o código do pacote:"
-  id <- getLine 
+  id <- getLine
   -- TODO: verificar se o código existe
   let newPackagesIdList = packagesIdList ++ [read id :: Int]
   putStrLn "Produto adicionado com sucesso!"
@@ -80,7 +80,7 @@ registerDelivery deliveries packages = do
   -- update delivery's packages to in progress
   updatePackagesFromIds packages packagesIds "entregando";
   putStrLn "Entrega cadastrada!"
-    
+
 
 printDelivery :: Delivery -> IO ()
 printDelivery (Delivery id packages status) = do
@@ -90,6 +90,12 @@ printDelivery (Delivery id packages status) = do
   putStrLn delivery
 
 
+countDeliveriesByStatus :: [Delivery] -> String -> IO()
+countDeliveriesByStatus deliveries status  = do
+  let count = length (filter (\(Delivery _ _ deliveryStatus) -> deliveryStatus == status) deliveries)
+  putStrLn ("Quantidade de entregas com status " ++ status ++ ": " ++ (show count))
+
+
 printDeliveries :: Int -> Int -> [Delivery] -> IO ()
 printDeliveries index len deliveries = do
   let delivery = deliveries !! index
@@ -97,7 +103,11 @@ printDeliveries index len deliveries = do
   then do
       printDelivery delivery
       printDeliveries (index + 1) len deliveries
-  else putStrLn ("Quantidade de entregas: " ++ (show len))
+  else do
+      (countDeliveriesByStatus deliveries "entregando")
+      (countDeliveriesByStatus deliveries "entregue")
+      (countDeliveriesByStatus deliveries "falha")
+      (countDeliveriesByStatus deliveries "sucesso")
 
 listDeliveries :: [Delivery] -> IO ()
 listDeliveries deliveries = do
