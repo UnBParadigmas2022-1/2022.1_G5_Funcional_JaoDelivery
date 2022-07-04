@@ -17,6 +17,7 @@ data Package = Package {
   status :: String 
 } deriving (Show)
 
+-- read packages from txt file
 readPackagesFromFile :: IO [Package]
 readPackagesFromFile = do
   let filename = "packages.txt"
@@ -33,10 +34,12 @@ readPackagesFromFile = do
   let packages = map words $ lines fileContents
   return (map readData packages)
 
+-- parse package data type to string
 packageToString :: Package -> String
 packageToString (Package id to from address status) =
   (show id) ++ " " ++ to ++ " " ++ from ++ " " ++ address ++ " " ++ status
 
+-- write packages txt file
 createFileFromPackages :: [Package] -> IO ()
 createFileFromPackages packages = do
   file <- openFile "packages.txt" WriteMode
@@ -44,6 +47,7 @@ createFileFromPackages packages = do
   hPutStr file (unlines packageStrings)
   hClose file
 
+-- create package
 registerPackage :: [Package] -> IO ()
 registerPackage packages = do
   clearScreen;
@@ -61,6 +65,7 @@ registerPackage packages = do
   createFileFromPackages (packages ++ [package])
   putStrLn "Pacote cadastrado com sucesso!"
 
+-- print single package
 printPackage :: Package -> IO ()
 printPackage (Package id to from address status) = do
   let package = ("Identificador: " ++ (show id) ++ "\n" ++
@@ -70,6 +75,7 @@ printPackage (Package id to from address status) = do
                   "Status: " ++ formatOutput status ++ "\n")
   putStrLn package
 
+-- print multiple packages
 printPackages :: Int -> Int -> [Package] -> IO ()
 printPackages num len list = do
   let package = list !! num
@@ -79,6 +85,7 @@ printPackages num len list = do
       printPackages (num + 1) len list
   else putStrLn ("Quantidade de pacotes: " ++ (show len))
 
+-- initial listing packages function
 listPackages :: [Package] -> IO ()
 listPackages packages = do
   let len = length packages
@@ -86,6 +93,7 @@ listPackages packages = do
   putStrLn "======== TODOS OS PACOTES PARA ENTREGA ========"
   printPackages 0 len packages
 
+-- list all packages with pending status
 listPendingPackages :: [Package] -> IO ()
 listPendingPackages packages = do
   let pendingPackages = (filter (\x -> status x == "pendente") packages)
@@ -94,12 +102,13 @@ listPendingPackages packages = do
   putStrLn "======== TODOS OS PACOTES PENDENTES ========"
   printPackages 0 len pendingPackages
 
--- Get the package by identifier
+-- get package by identifier
 getPackage :: [Package] -> Int -> IO Package
 getPackage packages id = do
   let package = packages !! (id - 1)
   return package
 
+-- update package status
 updatePackagesStatus :: [Package] -> [Int] -> String -> Int -> Int -> IO [Package]
 updatePackagesStatus packages packagesIds status index len = do
   if index /= len
@@ -111,12 +120,14 @@ updatePackagesStatus packages packagesIds status index len = do
     updatePackagesStatus updatedPackages packagesIds status (index+1) len
   else return (packages);
 
+-- update packages status by id
 updatePackagesFromIds :: [Package] -> [Int] -> String -> IO ()
 updatePackagesFromIds packages packagesIds status = do
   updatedPackages <- updatePackagesStatus packages packagesIds status 0 (length packagesIds)
   createFileFromPackages updatedPackages
   putStrLn "Status dos pacotes alterados com sucesso!"
-  
+
+-- calculate package route from Central
 calculatePackageRoute :: [Package] -> IO ()
 calculatePackageRoute packages = do
   clearScreen;

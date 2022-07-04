@@ -9,6 +9,7 @@ import System.Console.ANSI
 import Package
 import Delivery
 
+-- main menu
 menu :: IO()
 menu = do {
   clearScreen;
@@ -24,6 +25,7 @@ menu = do {
     "3" -> putStrLn "Finalizando...";
 }
 
+-- main package menu
 packageMenu :: IO()
 packageMenu = do {
   packages <- readPackagesFromFile;
@@ -47,6 +49,7 @@ packageMenu = do {
   menu;
 }
 
+-- main delivery menu
 deliveryMenu :: IO()
 deliveryMenu = do {
   deliveries <- readDeliveriesFromFile;
@@ -71,6 +74,7 @@ deliveryMenu = do {
   menu;
 }
 
+-- delivery finish flow menu
 deliveryFinishMenu :: [Delivery] -> [Package] -> IO()
 deliveryFinishMenu deliveries packages = do {
   clearScreen;

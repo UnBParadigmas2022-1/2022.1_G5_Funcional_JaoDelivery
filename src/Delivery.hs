@@ -17,6 +17,7 @@ data Delivery = Delivery {
   status   :: String
 } deriving (Show)
 
+-- get deliveries from txt file
 readDeliveriesFromFile :: IO [Delivery]
 readDeliveriesFromFile = do
   let filename = "deliveries.txt"
@@ -33,10 +34,12 @@ readDeliveriesFromFile = do
   let deliveries = map words $ lines fileContents
   return (map readData deliveries)
 
+-- parse delivery data type to string
 deliveryToString :: Delivery -> String
 deliveryToString (Delivery id packages status) =
   (show id) ++ " " ++ (intercalate "," (map show packages)) ++ " " ++ status
 
+-- write deliveries txt file
 createFileFromDeliveries :: [Delivery] -> IO ()
 createFileFromDeliveries deliveries = do
   file <- openFile "deliveries.txt" WriteMode
@@ -44,6 +47,7 @@ createFileFromDeliveries deliveries = do
   hPutStr file (unlines deliveryStrings)
   hClose file
 
+-- loop for product add flow
 continueAddPackages :: [Package] -> [Int] -> IO [Int]
 continueAddPackages packages newPackagesIdList = do
   putStrLn "Deseja adicionar outro produto?"
@@ -59,6 +63,7 @@ continueAddPackages packages newPackagesIdList = do
     putStrLn "Opcao invalida, tente novamente\n"
     continueAddPackages packages newPackagesIdList
 
+-- add products to current delivery
 addPackagesToBag :: [Package] -> [Int] -> IO [Int]
 addPackagesToBag packages packagesIdList = do
   listPendingPackages packages
@@ -69,6 +74,7 @@ addPackagesToBag packages packagesIdList = do
   putStrLn "Produto adicionado com sucesso!"
   continueAddPackages packages newPackagesIdList
 
+-- create delivery
 registerDelivery :: [Delivery] -> [Package] -> IO ()
 registerDelivery deliveries packages = do
   let packagesIds = []
@@ -81,7 +87,7 @@ registerDelivery deliveries packages = do
   updatePackagesFromIds packages packagesIds "entregando";
   putStrLn "Entrega cadastrada!"
 
-
+-- print single delivery
 printDelivery :: Delivery -> IO ()
 printDelivery (Delivery id packages status) = do
   let delivery = ("Identificador: " ++ (show id) ++ "\n" ++
@@ -89,13 +95,13 @@ printDelivery (Delivery id packages status) = do
                 "Status: " ++ formatOutput status ++ "\n")
   putStrLn delivery
 
-
+-- get deliveries quantity by status
 countDeliveriesByStatus :: [Delivery] -> String -> IO()
 countDeliveriesByStatus deliveries status  = do
   let count = length (filter (\(Delivery _ _ deliveryStatus) -> deliveryStatus == status) deliveries)
   putStrLn ("Quantidade de entregas com status " ++ status ++ ": " ++ (show count))
 
-
+-- print multiple deliveries
 printDeliveries :: Int -> Int -> [Delivery] -> IO ()
 printDeliveries index len deliveries = do
   let delivery = deliveries !! index
@@ -109,6 +115,7 @@ printDeliveries index len deliveries = do
       (countDeliveriesByStatus deliveries "falha")
       (countDeliveriesByStatus deliveries "cancelada")
 
+-- initial listing deliveries function
 listDeliveries :: [Delivery] -> IO ()
 listDeliveries deliveries = do
   let len = length deliveries
@@ -116,6 +123,7 @@ listDeliveries deliveries = do
   putStrLn "======== STATUS ENTREGA ========"
   printDeliveries 0 len deliveries
 
+-- update delivery status
 updateDeliveryStatus :: [Delivery] -> [Package] -> Int -> String -> IO ()
 updateDeliveryStatus deliveries packagesList id status = do
   -- update delivery status
