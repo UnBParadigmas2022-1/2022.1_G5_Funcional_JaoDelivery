@@ -86,10 +86,11 @@ listPackages packages = do
 
 listPendingPackages :: [Package] -> IO ()
 listPendingPackages packages = do
-  let len = length packages
+  let pendingPackages = (filter (\x -> status x == "pendente") packages)
+  let len = length pendingPackages
   clearScreen;
   putStrLn "======== TODOS OS PACOTES PENDENTES ========"
-  printPackages 0 len (filter (\x -> status x == "pendente") packages)
+  printPackages 0 len pendingPackages
 
 -- Get the package by identifier
 getPackage :: [Package] -> Int -> IO Package
