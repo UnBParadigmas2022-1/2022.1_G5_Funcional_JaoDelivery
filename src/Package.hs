@@ -64,10 +64,10 @@ registerPackage packages = do
 printPackage :: Package -> IO ()
 printPackage (Package id to from address status) = do
   let package = ("Identificador: " ++ (show id) ++ "\n" ++
-                  "Destinatário: " ++ to ++ "\n" ++
-                  "Remetente: " ++ from ++ "\n" ++
-                  "Endereço: " ++ address ++ "\n" ++
-                  "Status: " ++ status ++ "\n")
+                  "Destinatário: " ++ formatOutput to ++ "\n" ++
+                  "Remetente: " ++ formatOutput from ++ "\n" ++
+                  "Endereço: " ++ formatOutput address ++ "\n" ++
+                  "Status: " ++ formatOutput status ++ "\n")
   putStrLn package
 
 printPackages :: Int -> Int -> [Package] -> IO ()

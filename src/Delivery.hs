@@ -86,7 +86,7 @@ printDelivery :: Delivery -> IO ()
 printDelivery (Delivery id packages status) = do
   let delivery = ("Identificador: " ++ (show id) ++ "\n" ++
                 "Pacotes: " ++ (intercalate "," (map show packages)) ++ "\n" ++
-                "Status: " ++ status ++ "\n")
+                "Status: " ++ formatOutput status ++ "\n")
   putStrLn delivery
 
 
