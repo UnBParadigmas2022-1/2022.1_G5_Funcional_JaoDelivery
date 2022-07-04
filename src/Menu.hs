@@ -8,6 +8,7 @@ import Control.Monad
 import System.Console.ANSI
 import Package
 import Delivery
+import System.Exit
 
 -- main menu
 menu :: IO()
@@ -22,7 +23,8 @@ menu = do {
   case option of
     "1" -> packageMenu;
     "2" -> deliveryMenu;
-    "3" -> putStrLn "Finalizando...";
+    "3" -> do clearScreen;putStrLn "Finalizando...";exitSuccess ;
+  
 }
 
 -- main package menu
