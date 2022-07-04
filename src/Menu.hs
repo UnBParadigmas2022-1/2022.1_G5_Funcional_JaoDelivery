@@ -42,6 +42,8 @@ packageMenu = do {
     "3" -> calculatePackageRoute packages;
     "4" -> menu;
   ;
+  putStrLn "\n\nPressione enter para continuar...";
+  _ <- getLine;
   menu;
 }
 
@@ -63,6 +65,10 @@ deliveryMenu = do {
     "2" -> listDeliveries deliveries;
     "3" -> deliveryFinishMenu deliveries packages;
     "4" -> menu;
+  ;
+  putStrLn "\n\nPressione enter para continuar...";
+  _ <- getLine;
+  menu;
 }
 
 deliveryFinishMenu :: [Delivery] -> [Package] -> IO()
@@ -85,5 +91,7 @@ deliveryFinishMenu deliveries packages = do {
     "3" -> updateDeliveryStatus deliveries packages (read id :: Int) "cancelada";
     "4" -> deliveryMenu;
   ;
+  putStrLn "\n\nPressione enter para continuar...";
+  _ <- getLine;
   menu;
 }

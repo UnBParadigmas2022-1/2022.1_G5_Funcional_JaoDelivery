@@ -80,7 +80,6 @@ registerDelivery deliveries packages = do
   -- update delivery's packages to in progress
   updatePackagesFromIds packages packagesIds "entregando";
   putStrLn "Entrega cadastrada!"
-    
 
 printDelivery :: Delivery -> IO ()
 printDelivery (Delivery id packages status) = do
@@ -88,7 +87,6 @@ printDelivery (Delivery id packages status) = do
                 "Pacotes: " ++ (intercalate "," (map show packages)) ++ "\n" ++
                 "Status: " ++ status ++ "\n")
   putStrLn delivery
-
 
 printDeliveries :: Int -> Int -> [Delivery] -> IO ()
 printDeliveries index len deliveries = do
