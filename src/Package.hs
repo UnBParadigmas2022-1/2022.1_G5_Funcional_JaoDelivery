@@ -48,11 +48,11 @@ registerPackage :: [Package] -> IO ()
 registerPackage packages = do
   clearScreen;
   putStrLn "Digite o nome do destinatário:"
-  to <- getLine
+  to <- formatInput <$> getLine
   putStrLn "Digite o nome do remetente:"
-  from <- getLine
-  putStrLn "Digite o endereço do destinatário:"
-  address <- getLine
+  from <- formatInput <$> getLine
+  putStrLn "Digite a cidade do destinatário: (RA de Brasília)"
+  address <- formatInput <$> getLine
   let id = (length packages) + 1
   putStr "Identificador do pacote: " 
   putStrLn $ show id
