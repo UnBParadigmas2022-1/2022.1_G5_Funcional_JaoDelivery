@@ -2,48 +2,57 @@
 Esse repositório é para ser utilizado pelos grupos como um template inicial, da home page do Projeto.
 As seções do Template NÃO DEVEM SER OMITIDAS, sendo TODAS RELEVANTES.
 
-**!! *Atenção: Renomeie o seu repositório para (Ano.Semestre)_(Grupo)_(Paradigma)_(NomeDoProjeto)*. !!** 
-
 Paradigmas:
  - Funcional
  - Logico
  - SMA
 
-**!! *Não coloque os nomes dos alunos no título do repositório*. !!**
-
-**!! *Exemplo de título correto: 2022.1_G1_Logico_ProjetoRoteirosAereos*. !!**
- 
- (Apague esses comentários)
-
-# NomeDoProjeto
+# Jao_Delivery
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
-**Nro do Grupo**: XX<br>
-**Paradigma**: XXXXXXXXXX<br>
+**Nro do Grupo**: 05<br>
+**Paradigma**: Funcional<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 180041592  |  Denys Rogeres Leles dos Santos |
+| 180113259  |  Felipe Correia Andrade |
+| 180103580  |  Jonathan Jorge Barbosa Oliveira|
+| 180125885  |  Lucas Melo dos Santos |
+| 180127535  |  Mateus Brandao Teixeira |
+| 180106821  |  Mateus Gomes do Nascimento |
+| 180127641  |  Matheus Afonso de Souza |
+| 180138545  |  Thiago Mesquita Peres Nunes de Carvalho |
+| 180132245  |  Vinicius de Sousa Saturnino |
 
 ## Sobre 
-Descreva o seu projeto em linhas gerais. 
-Use referências, links, que permitam conhecer um pouco mais sobre o projeto.
+Este software é um sistema de envio de mercadorias onde pessoas podem enviar seus pacotes da forma mais ágil acompanhando a trajetoria e o status deles até o destinatário. 
+
 
 ## Screenshots
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
+![](./img/menu1.jpeg)
+![](./img/menuEntrega.jpeg)
 
 ## Instalação 
-**Linguagens**: xxxxxx<br>
-**Tecnologias**: xxxxxx<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
-Gifs animados e outras ilustrações são bem-vindos!
+É necessário instalar as seguintes ferramentas para rodar o programa:
+- GHC
+- cabal-install
+- Stack
+- haskell-language-server(opcional)
+  
+Para instalar, basta seguir o tutorial disponível em https://www.haskell.org/downloads/
+Em seguida, basta abrir o terminal e digitar **make run**
+**Linguagens**: Haskell<br>
+**Tecnologias**: Haskell<br>
+
 
 ## Uso 
-Explique como usar seu projeto.
-Procure ilustrar em passos, com apoio de telas do software.
+Entre no software, e cadestre seu pacote a partir do menu de cadastro (opção "1"). Após isso, vá para a entrega (opção "2"), onde será selecionando o pacote e seu respectivo destinatário. Com isso é possível verificar o status de entrega no menu de "entrega" (opção "3"). E o status da mercadoria pode ser alterado para "Sucesso" (Produto entregue com sucesso), "Falha" (Produto entregue com falha) ou "Cancelar" (Cancelar a entrega do produto).
+
+![](./img/status_entrega_resumo.jpeg)
+![](./img/status_entrega.jpeg)
+
 
 ## Vídeo
 Adicione 1 ou mais vídeos com a execução do projeto.
