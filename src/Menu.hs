@@ -67,8 +67,8 @@ deliveryFinishMenu :: [Delivery] -> [Package] -> IO()
 deliveryFinishMenu deliveries packages = do {
   clearScreen;
 
-  "Digite o código da entrega:"
-  id <- getLine
+  putStrLn ("Digite o código da entrega:");
+  id <- getLine;
   -- TODO: verificar se o código existe
   putStrLn "========= FINALIZAR ENTREGA =========";
   putStrLn "1 - Sucesso";

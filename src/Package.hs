@@ -97,18 +97,19 @@ getPackage packages id = do
   let package = packages !! id
   return package
 
-updatePackageStatus :: [Package] -> Int -> String -> IO ()
-updatePackageStatus packages id status = do
-  let (left,element:right) = splitAt (id - 1) packages
-  let updatedPackage = Package id (to element) (from element) (address element) status
-  let updatedPackages = left ++ [updatedPackage] ++ right
-  createFileFromPackages updatedPackages
-
-updatePackagesFromIds :: [Package] -> [Int] -> Int -> Int -> String -> IO ()
-updatePackagesFromIds packages packagesIds index len status = do
-  let id = packagesIds !! index
+updatePackagesStatus :: [Package] -> [Int] -> String -> Int -> Int -> IO [Package]
+updatePackagesStatus packages packagesIds status index len = do
   if index /= len
   then do
-    updatePackageStatus packages id status
-    updatePackagesFromIds packages packagesIds (index+1) len status
-  else putStrLn "Status dos pacotes alterados com sucesso para: " ++ status
+    let id = packagesIds !! index
+    let (left,element:right) = splitAt (id - 1) packages
+    let updatedPackage = Package id (to element) (from element) (address element) status
+    let updatedPackages = left ++ [updatedPackage] ++ right
+    updatePackagesStatus updatedPackages packagesIds status (index+1) len
+  else return (packages);
+
+updatePackagesFromIds :: [Package] -> [Int] -> String -> IO ()
+updatePackagesFromIds packages packagesIds status = do
+  updatedPackages <- updatePackagesStatus packages packagesIds status 0 (length packagesIds)
+  createFileFromPackages updatedPackages
+  putStrLn "Status dos pacotes alterados com sucesso!"
