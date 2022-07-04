@@ -1,10 +1,10 @@
 name: jao-delivery
-version: 0.1.0.0
-github: "githubuser/jao-delivery"
+version: 1.0.0
+github: "UnBParadigmas2022-1/2022.1_G5_Funcional_JaoDelivery"
 license: BSD3
-author: "Author name here"
-maintainer: "example@example.com"
-copyright: "2022 Author name here"
+author: "Author Group five 2022.1"
+maintainer: "jonathan.jb.oliveira@gmail.com"
+copyright: "2022 Author Group five of paradgimas de programação subject 2022.1"
 
 extra-source-files:
   - README.md
