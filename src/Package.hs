@@ -127,7 +127,7 @@ updatePackagesFromIds packages packagesIds status = do
   createFileFromPackages updatedPackages
   putStrLn "Status dos pacotes alterados com sucesso!"
 
--- calculate package route from Central
+-- calculate package route from central
 calculatePackageRoute :: [Package] -> IO ()
 calculatePackageRoute packages = do
   clearScreen;
@@ -137,5 +137,5 @@ calculatePackageRoute packages = do
 
   file <- readFile "graph.txt"
   let graph = importText file
-  let solution = dijkstra graph "Central"
+  let solution = dijkstra graph "central"
   printShortestPath (pathToNode solution (address package)) ""

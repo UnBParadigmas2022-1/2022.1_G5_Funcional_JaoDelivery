@@ -1,3 +1,8 @@
+central brasilia 379891.06
+central aguas_claras 379891.06
+central fercal 379891.06
+central octogonal 379891.06
+central planaltina 379891.06
 aguas_claras arniqueira 379891.06
 aguas_claras brasilia 135299.92
 aguas_claras brazlandia 73998.17
