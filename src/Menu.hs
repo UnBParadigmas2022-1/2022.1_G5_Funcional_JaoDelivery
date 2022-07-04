@@ -41,6 +41,8 @@ packageMenu = do {
     "2" -> listPackages packages;
     "3" -> calculatePackageRoute packages;
     "4" -> menu;
+  ;
+  menu;
 }
 
 deliveryMenu :: IO()
@@ -78,8 +80,10 @@ deliveryFinishMenu deliveries packages = do {
 
   option <- getLine;
   case option of
-    "1" -> updateDeliveryStatus deliveries packages (read id :: Int) "sucesso";
+    "1" -> updateDeliveryStatus deliveries packages (read id :: Int) "entregue";
     "2" -> updateDeliveryStatus deliveries packages (read id :: Int) "falha";
     "3" -> updateDeliveryStatus deliveries packages (read id :: Int) "cancelada";
     "4" -> deliveryMenu;
+  ;
+  menu;
 }
