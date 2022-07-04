@@ -62,7 +62,15 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-| Fulano  |  Programação dos Fatos da Base de Conhecimento Lógica | Boa |
+| Denys Rogeres Leles dos Santos  |  --- | --- |
+| Felipe Correia Andrade  |  --- | --- |
+| Jonathan Jorge Barbosa Oliveira  |  Implementação do fluxo de criar pacote, verificar pacote, formatar as entradas e saídas dos dados, criação de entrega e criação dos dados para popular o grafo. | Excelente |
+| Lucas Melo dos Santos  |  --- | --- |
+| Mateus Brandao Teixeira  |  --- | --- |
+| Mateus Gomes do Nascimento  |  Implementação do fluxo de criar entrega, verificar entrega, finalizar entrega, atualizar status das entregas e pacotes, dos menus e da listagem de pacotes e entregas. | Excelente |
+| Matheus Afonso de Souza  |  Implementação da estrutura do grafo, do algoritmo de Dijkstra, do fluxo de calcular melhor rota, das funções de leitura e escrita em arquivos, dos menus, do cadastro de novos pacotes, da verificação de pacotes e da criação dos dados para popular o grafo. | Excelente |
+| Thiago Mesquita Peres Nunes de Carvalho  |  Implementação do fluxo de criar entrega, verificar entregas, finalizar entrega, da listagem de pacotes e entregas e menus. | Excelente |
+| Vinicius de Sousa Saturnino  |  Implementação do fluxo de criar pacote, verificar pacotes, dos menus e da repetição de escolhas do usuário | Excelente |
 
 ## Outros 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui.
