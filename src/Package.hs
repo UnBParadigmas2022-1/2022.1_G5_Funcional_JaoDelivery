@@ -90,7 +90,7 @@ listPackages :: [Package] -> IO ()
 listPackages packages = do
   let len = length packages
   clearScreen;
-  putStrLn "======== TODOS OS PACOTES PARA ENTREGA ========"
+  putStrLn "======== TODOS OS PACOTES PARA ENTREGA ========\n"
   printPackages 0 len packages
 
 -- list all packages with pending status
