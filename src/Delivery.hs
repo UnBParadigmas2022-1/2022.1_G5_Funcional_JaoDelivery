@@ -76,6 +76,9 @@ registerDelivery deliveries packages = do
   let deliveryId = (length deliveries) + 1
   let delivery = Delivery deliveryId packagesIds "entregando"
   createFileFromDeliveries (deliveries ++ [delivery])
+
+  -- update delivery's packages to in progress
+  updatePackagesFromIds packages packagesIds "entregando";
   putStrLn "Entrega cadastrada!"
     
 
