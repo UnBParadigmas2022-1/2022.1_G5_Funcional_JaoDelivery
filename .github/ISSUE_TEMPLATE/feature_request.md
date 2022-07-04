@@ -1,20 +1,26 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
+about: Sugerir uma ideia para este projecto
 title: ''
 labels: ''
 assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+## Descrição
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+Nesta seção, o usuário deve descrever qual é o problema / bug real a ser resolvido ou o recurso a ser desenvolvido.
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+Exemplo:
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+> * _O usuário deve fazer o login no sistema para acessar recursos específicos._
+> * _O login deve usar e-mail e senha do usuário_
+> * _Se o e-mail ou senha do usuário estiverem errados, o sistema deve abrir um modelo de erro_
+
+## Solução
+
+Nesta seção, o (s) desenvolvedor (es) devem descrever uma ideia clara e concisa do que foi desenvolvido ou vincular o Pull Request.
+
+## Contexto adicional
+
+Adicione qualquer outro contexto ou capturas de tela sobre a solicitação de recurso aqui.

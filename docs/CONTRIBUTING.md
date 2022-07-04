@@ -2,7 +2,7 @@
 
 Links úteis:
 
- * [Readme](./../README.md)
+ * [Readme](./README.md)
  * [Features](#features)
  * [Issues](#issues)
  * [Pull Requests](#pull-requests)
