@@ -79,4 +79,5 @@ Com o desenvolvimento do projeto, foi evidente que no início o grupo teve uma g
 Ao longo do desenvolvimento do projeto, o grupo percebeu que, embora as desvantagens de um paradigma novo sejam bem evidentes no início, por se tratar de uma nova forma de pensar, cada paradigma possui suas vantagens e desvantagens, e na hora de implementar um novo trabalho, é importante escolher um paradigma levando em conta estas vantagens e desvantagens.
 
 ## Fontes
-Para a elaboração do grafo e implementação do algoritmo de dijkstra, o qual foi utilizado para busca no grafo, utilizamos o [seguinte repositório](https://github.com/ddrake/haskell-dijkstra) como exemplo, assim, facilitando no desenvolvimento e utilização da estrutura de dados.
+- Para a elaboração do grafo e implementação do algoritmo de dijkstra, o qual foi utilizado para busca no grafo, utilizamos o [seguinte repositório](https://github.com/ddrake/haskell-dijkstra) como exemplo, assim, facilitando no desenvolvimento e utilização da estrutura de dados.
+- Para estudar sobre a linguagem do Haskell utilizamos a documentação da linguagem, disponível nesse [link](https://www.haskell.org/documentation/)
