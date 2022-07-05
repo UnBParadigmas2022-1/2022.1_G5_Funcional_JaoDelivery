@@ -63,10 +63,11 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
 | Denys Rogeres Leles dos Santos  |  Implementação do fluxo de criar entrega, verificar entregas e contribuição na documentação | Boa |
-| Felipe Correia Andrade  |  Ajudei na documentação e revisei as outras funções. Não pude ajudar muito por causa do tamanho do escopo e pq já haviam feito quase tudo| Regular  |
+| Felipe Correia Andrade  |  Ajudei na documentação e revisei as outras funções. Não pude ajudar muito por causa do tamanho do escopo e porque já haviam feito quase tudo. | Regular  |
 | Jonathan Jorge Barbosa Oliveira  |  Implementação do fluxo de criar pacote, verificar pacote, formatar as entradas e saídas dos dados, criação de entrega e criação dos dados para popular o grafo. | Excelente |
-| Lucas Melo dos Santos  |  --- | --- |
-| Mateus Brandao Teixeira  |Implementação do fluxo de criar entrega, verificar entregas, finalizar entrega, da listagem de pacotes e entregas e menus.| Excelente |
+| Lucas Melo dos Santos  |  Contribui principalmente no módulo de entregas, na listagem de número de entregas
+por status | Boa |
+| Mateus Brandao Teixeira  |  Ajudei na documentação e revisei as outras funções. | Regular |
 | Mateus Gomes do Nascimento  |  Implementação do fluxo de criar entrega, verificar entrega, finalizar entrega, atualizar status das entregas e pacotes, dos menus e da listagem de pacotes e entregas. | Excelente |
 | Matheus Afonso de Souza  |  Implementação da estrutura do grafo, do algoritmo de Dijkstra, do fluxo de calcular melhor rota, das funções de leitura e escrita em arquivos, dos menus e da criação dos dados para popular o grafo. | Excelente |
 | Thiago Mesquita Peres Nunes de Carvalho  |  Implementação do fluxo de criar entrega, verificar entregas, finalizar entrega, da listagem de pacotes e entregas e menus. | Excelente |
