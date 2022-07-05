@@ -7,15 +7,15 @@
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| 180041592  |  Denys Rogeres Leles dos Santos |
-| 180113259  |  Felipe Correia Andrade |
-| 180103580  |  Jonathan Jorge Barbosa Oliveira|
-| 180125885  |  Lucas Melo dos Santos |
-| 180127535  |  Mateus Brandao Teixeira |
-| 180106821  |  Mateus Gomes do Nascimento |
-| 180127641  |  Matheus Afonso de Souza |
-| 180138545  |  Thiago Mesquita Peres Nunes de Carvalho |
-| 180132245  |  Vinicius de Sousa Saturnino |
+| 180041592  |  [Denys Rogeres Leles dos Santos](https://github.com/DenysRogeres) |
+| 180113259  |  [Felipe Correia Andrade](https://github.com/Percon12) |
+| 180103580  |  [Jonathan Jorge Barbosa Oliveira](https://github.com/Jonathan-Oliveira) |
+| 180125885  |  [Lucas Melo dos Santos](https://github.com/luucas-melo) |
+| 180127535  |  [Mateus Brandao Teixeira](https://github.com/mateusbrandaot) |
+| 180106821  |  [Mateus Gomes do Nascimento](https://github.com/matgomes21) |
+| 180127641  |  [Matheus Afonso de Souza](https://github.com/Matheusafonsouza) |
+| 180138545  |  [Thiago Mesquita Peres Nunes de Carvalho](https://github.com/thiagompc) |
+| 180132245  |  [Vinicius de Sousa Saturnino](https://github.com/viniciussaturnino) |
 
 ## Sobre 
 Este software é um sistema de envio de mercadorias onde pessoas podem enviar seus pacotes da forma mais ágil acompanhando a trajetoria e o status deles até o destinatário. 
@@ -80,4 +80,4 @@ Ao longo do desenvolvimento do projeto, o grupo percebeu que, embora as desvanta
 
 ## Fontes
 - Para a elaboração do grafo e implementação do algoritmo de dijkstra, o qual foi utilizado para busca no grafo, utilizamos o [seguinte repositório](https://github.com/ddrake/haskell-dijkstra) como exemplo, assim, facilitando no desenvolvimento e utilização da estrutura de dados.
-- Para estudar sobre a linguagem do Haskell utilizamos a documentação da linguagem, disponível nesse [link](https://www.haskell.org/documentation/)
+- Para estudar sobre a linguagem do Haskell utilizamos a documentação da linguagem, disponível nesse [link](https://www.haskell.org/documentation/).
