@@ -49,14 +49,7 @@ Entre no software, e cadestre seu pacote a partir do menu de cadastro (opção "
 
 
 ## Vídeo
-Adicione 1 ou mais vídeos com a execução do projeto.
-Procure: 
-(i) Introduzir o projeto;
-(ii) Mostrar passo a passo o código, explicando-o, e deixando claro o que é de terceiros, e o que é contribuição real da equipe;
-(iii) Apresentar particularidades do Paradigma, da Linguagem, e das Tecnologias, e
-(iV) Apresentar lições aprendidas, contribuições, pendências, e ideias para trabalhos futuros.
-OBS: TODOS DEVEM PARTICIPAR, CONFERINDO PONTOS DE VISTA.
-TEMPO: +/- 15min
+O vídeo de apresentação pode ser visto no seguinte [link](https://youtu.be/RVQPZT0O75g).
 
 ## Participações
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
