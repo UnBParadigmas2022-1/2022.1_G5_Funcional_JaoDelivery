@@ -69,7 +69,7 @@ Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 | Mateus Brandao Teixeira  |Implementação do fluxo de criar entrega, verificar entregas, finalizar entrega, da listagem de pacotes e entregas e menus.| Excelente |
 | Mateus Gomes do Nascimento  |  Implementação do fluxo de criar entrega, verificar entrega, finalizar entrega, atualizar status das entregas e pacotes, dos menus e da listagem de pacotes e entregas. | Excelente |
 | Matheus Afonso de Souza  |  Implementação da estrutura do grafo, do algoritmo de Dijkstra, do fluxo de calcular melhor rota, das funções de leitura e escrita em arquivos, dos menus e da criação dos dados para popular o grafo. | Excelente |
-| Thiago Mesquita Peres Nunes de Carvalho  |  Implementação do fluxo de scriar entrega, verificar entregas, finalizar entrega, da listagem de pacotes e entregas e menus. | Excelente |
+| Thiago Mesquita Peres Nunes de Carvalho  |  Implementação do fluxo de criar entrega, verificar entregas, finalizar entrega, da listagem de pacotes e entregas e menus. | Excelente |
 | Vinicius de Sousa Saturnino  |  Implementação do fluxo de criar pacote, verificar pacotes, dos menus e da repetição de escolhas do usuário. | Excelente |
 
 ## Outros 
